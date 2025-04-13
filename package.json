@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy" : "npm run build",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
+    "deploy" : "gh-pages -d dist",
   },
   "dependencies": {
     "framer-motion": "^12.6.5",
