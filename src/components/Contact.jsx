@@ -43,8 +43,14 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-20 bg-dark">
-      <div className="container mx-auto px-4">
+    <section id="contact" ref={sectionRef} className="py-20 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary opacity-20 blur-3xl"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-80 h-80 rounded-full bg-secondary opacity-10 blur-3xl animate-float"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -52,25 +58,25 @@ const Contact = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 text-gray-200">
-            Get In <span className="text-primary">Touch</span>
+            Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Have a project in mind? Contact us today and let's discuss how we can help bring your ideas to life.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-dark-200 p-8 rounded-xl shadow-dark-md border border-dark-300"
+            className="glass p-8 rounded-xl shadow-dark-md hover:shadow-glow border border-gray-700 transition-all"
           >
             <h3 className="text-2xl font-bold mb-6 text-gray-200">Contact Information</h3>
 
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-primary rounded-full p-3 mr-4">
+                <div className="bg-gradient-to-br from-primary to-secondary rounded-full p-3 mr-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -82,7 +88,7 @@ const Contact = () => {
               </div>
 
               <div className="flex items-start">
-                <div className="bg-primary rounded-full p-3 mr-4">
+                <div className="bg-gradient-to-br from-primary to-secondary rounded-full p-3 mr-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                   </svg>
@@ -94,7 +100,7 @@ const Contact = () => {
               </div>
 
               <div className="flex items-start">
-                <div className="bg-primary rounded-full p-3 mr-4">
+                <div className="bg-gradient-to-br from-primary to-secondary rounded-full p-3 mr-4">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4" />
                   </svg>
@@ -126,7 +132,7 @@ const Contact = () => {
                 </div>
               )}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-gray-300 font-medium mb-2">Name</label>
                   <input
@@ -136,7 +142,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-200 text-gray-200 border border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 glass text-gray-200 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all hover:border-primary"
                     placeholder="Your name"
                   />
                 </div>
@@ -149,7 +155,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-dark-200 text-gray-200 border border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full px-4 py-3 glass text-gray-200 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all hover:border-primary"
                     placeholder="Your email"
                   />
                 </div>
@@ -164,7 +170,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-dark-200 text-gray-200 border border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-3 glass text-gray-200 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all hover:border-primary"
                   placeholder="Subject"
                 />
               </div>
@@ -178,7 +184,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows="5"
-                  className="w-full px-4 py-3 bg-dark-200 text-gray-200 border border-dark-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full px-4 py-3 glass text-gray-200 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all hover:border-primary"
                   placeholder="Your message"
                 ></textarea>
               </div>
@@ -189,7 +195,7 @@ const Contact = () => {
                   whileTap={{ scale: 0.95 }}
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full py-3 px-6 bg-primary text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all ${
+                  className={`w-full py-3 px-6 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium shadow-lg hover:shadow-glow transition-all ${
                     isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
                   }`}
                 >
@@ -208,7 +214,7 @@ const Contact = () => {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-primary text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all inline-block"
+            className="px-8 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-medium shadow-lg hover:shadow-glow transition-all inline-block shimmer"
           >
             Go to Billing Portal
           </motion.a>
